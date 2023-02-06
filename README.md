@@ -18,17 +18,17 @@ note: for further details, check the [demo playbook](https://cisco.sharepoint.co
 
 Development teams have an API in production for some time, SRE teams (may also be organization CTO office or a technical lead responsible to review) have asked for the OpenAPI definition of the API. An OpenAPI document was provided to us. 
 
-Let’s look at it with SwaggerEditor, looks good? Shows revision number 1.12.0 
+Let’s look at it with SwaggerEditor, looks good? Shows revision number 1.22.0 
 
-Now let’s loaded into API Insights with 1.12.0 as rev1.
+Now let’s loaded into API Insights with 1.22.0 as rev1.
 
 API Insights shows gaps with completeness of Contract and Documentation but also Design Guidelines and Offensive Terms. We will be leaving REST guidelines out for the rest of this  demonstration. 
 
 We’re sending the findings report back to the engineering team and ask to fix for their next release. 
 
-A month later, the engineering team has made progress with the new release and sends the updated OpenAPI document – v1.13.0. They provide a note saying they fixed the Offensive Terms and expanded the OpenAPI document. 
+A month later, the engineering team has made progress with the new release and sends the updated OpenAPI document – v1.23.0. They provide a note saying they fixed the Offensive Terms and expanded the OpenAPI document. 
 
-We load the new OAS document 1.13.0 - rev1 into API Insights  
+We load the new OAS document 1.23.0 - rev1 into API Insights  
 
 API Insights shows progress: 100% inclusive language, but uncomplete for contract due to errors not being described. Also documentation is lacking examples.
 
@@ -38,12 +38,9 @@ Team comes back with the new OpenAPI document and once loaded in API Insights, i
 
 We mark revision 1.23.0-rev2 as 'release' in API Insights as the API goes into production.
 
-**2 months later**, the engineering team comes back to us with a new minor release, with addition of an operation PUT and some other minor changes. They provided a OpenAPI document versio 1.24.0.
+**2 months later**, the engineering team comes back to us with a new minor release, with addition of an operation PUT and some other minor changes. They provide an OpenAPI document version 1.24.0.
 
-
-The team comes back a few months later with a new release which is backward compatible and provides new features  has more features , and they provide a version 1.14.0 of the OpenAPI document, with a release note (X operations or paths). 
-
-We load it into API Insights, it shows revision 1.14.0 and now includes 5 operations.
+We load it into API Insights, it shows revision 1.24.0 and now includes 5 operations.
 
 First we check for the score, including 100% completeness of the API Contract.
 
@@ -51,7 +48,23 @@ First we check for the score, including 100% completeness of the API Contract.
 
 Now let's look at backward compatibility: we see the operation added but also a breaking change introduced. We inform engineering so that they fix before release.  
 
+### Going further
 
+* using the API Insights Visual Studio Code Extension, this flow would be simplified because engineering can spot gaps early on. 
+
+* integrating with engineering CI/CD pipeline, the gaps would be identified automatically 
+
+### Wrap up
+
+API Insights helped us identify offensive terms and fix for the next release. 
+
+API Insights was instrumental to provide tips to get to 100% completeness for the API Contract and Documentation. 
+
+Finally, API Insights prevented us from introducing a breaking change for the next release of the API. 
+
+Note: API Insights can also help with Design Conventions using a spectral ruleset defined for your organizations. And Panoptica can complement API Insights by providing security insights via both static analysis of contracts (is the API using your organization policies) but also via live traffic observations to ensure there are no drift related to security and zombies or shadow APIs 
+
+ 
 
 
 
