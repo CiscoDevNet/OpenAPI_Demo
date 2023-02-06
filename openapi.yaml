@@ -1,10 +1,11 @@
 openapi: 3.0.0
 info:
-  version: v1.22.0
+  version: v1.23.0
   title: Mini Dashboard API
   description: >
     The Mini Dashboard API is a modern REST API based on the OpenAPI
-    specification. Date: September 9th, 2022. [Recent Updates](https://mini.io/whats-new/)
+    specification. Date: October 7, 2022. [Recent
+    Updates](https://mini.io/whats-new/)
   contact:
     name: Mini Dashboard Developer Community
     url: https://mini.io/community
@@ -23,15 +24,16 @@ components:
       name: X-Mini-Dashboard-API-Key
       in: header
       description: Secret to access the API
-
+      
 paths:
   /organizations:
     get:
-      description: List the organizations that the user has privileges on whitelist
       operationId: getOrganizations
+      description: List the organizations that the user has privileges on
+      summary: List Organizations
       responses:
         '200':
-          description: Successful operation
+          description: Success
           content:
             application/json:
               schema:
@@ -41,20 +43,20 @@ paths:
                   properties:
                     id:
                       type: string
-                      description: Organization ID
+                      description: Organization Identifier
                     name:
                       type: string
-                      description: Organization name
+                      description: Organization Name
                     url:
                       type: string
-                      description: Organization URL
+                      description: Organization Url
                     api:
                       type: object
                       properties:
                         enabled:
                           type: boolean
                           description: Enable API access
-                      description: API related settings
+                      description: API settings"
                     licensing:
                       type: object
                       properties:
@@ -64,10 +66,8 @@ paths:
                             - co-term
                             - per-device
                             - subscription
-                          description: >-
-                            Organization licensing model. Can be 'co-term',
-                            'per-device', or 'subscription'.
-                      description: Licensing related settings
+                          description: "Organization licensing model. Can be 'co-term', 'per-device', or 'subscription'."
+                      description: Licensing settings
                     cloud:
                       type: object
                       properties:
@@ -76,30 +76,17 @@ paths:
                           properties:
                             name:
                               type: string
-                              description: Name of region
-                          description: Region info
-                      description: Data for this organization
-              examples:
-                response:
-                  value:
-                    - id: '2930418'
-                      name: My organization
-                      url: >-
-                        https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
-                      api:
-                        enabled: true
-                      licensing:
-                        model: co-term
-                      cloud:
-                        region:
-                          name: North America
-      summary: List organizations
+                              description: Name of theregion
+                          description: Region details
+                      description: Cloud infrastructure details
       tags:
         - read
     post:
-      description: Create a new organization
       operationId: createOrganization
+      description: Create a new organization
+      summary: Create Organization
       requestBody:
+        description: Details of the organization to create
         content:
           application/json:
             schema:
@@ -107,44 +94,19 @@ paths:
               properties:
                 name:
                   type: string
-                  description: The name of the organization
+                  description: Name of the organization
               required:
                 - name
+            examples:
+              AmsterdamOffice:
+                value:
+                  name: Amsterdam Office
+                  licensing:
+                    model: subscription
         required: true
       responses:
         '201':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                type: object
-              examples:
-                successResponse:
-                  value:
-                    id: '2930418'
-                    name: My organization
-                    url: >-
-                      https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
-                    api:
-                      enabled: true
-                    licensing:
-                      model: co-term
-      summary: Create a new organization
-      tags:
-        - configure
-  /organizations/{organizationId}:
-    get:
-      description: Return an organization
-      operationId: getOrganization
-      parameters:
-        - name: organizationId
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
+          description: Success
           content:
             application/json:
               schema:
@@ -152,13 +114,13 @@ paths:
                 properties:
                   id:
                     type: string
-                    description: Organization ID
+                    description: Organization Identifier
                   name:
                     type: string
-                    description: Organization name
+                    description: Organization Name
                   url:
                     type: string
-                    description: Organization URL
+                    description: Organization Url
                   api:
                     type: object
                     properties:
@@ -175,9 +137,7 @@ paths:
                           - co-term
                           - per-device
                           - subscription
-                        description: >-
-                          Organization licensing model. Can be 'co-term',
-                          'per-device', or 'subscription'.
+                        description: Organization licensing model. Can be 'co-term', 'per-device', or 'subscription'.
                     description: Licensing related settings
                   cloud:
                     type: object
@@ -190,39 +150,89 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
-              examples:
-                response:
-                  value:
-                    id: '2930418'
-                    name: My organization
-                    url: >-
-                      https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
-                    api:
-                      enabled: true
-                    licensing:
-                      model: co-term
-                    cloud:
-                      region:
-                        name: North America
-      summary: Return an organization
       tags:
-        - read
-    delete:
-      description: Delete an organization
-      operationId: deleteOrganization
+        - configure
+  /organizations/{id}:
+    get:
+      operationId: getOrganization
+      description: Fetch details for the specified organization
+      summary: Get Organization Details
       parameters:
-        - name: organizationId
+        - name: id
           in: path
           required: true
           schema:
             type: string
+            example: Amsterdam
+          description: Organization Identifier
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Organization Identifier
+                  name:
+                    type: string
+                    description: Organization Name
+                  url:
+                    type: string
+                    description: Organization Url
+                  api:
+                    type: object
+                    properties:
+                      enabled:
+                        type: boolean
+                        description: Enable API access
+                    description: API settings
+                  licensing:
+                    type: object
+                    properties:
+                      model:
+                        type: string
+                        enum:
+                          - co-term
+                          - per-device
+                          - subscription
+                        description: Organization licensing model. Can be 'co-term', 'per-device', or 'subscription'.
+                    description: Licensing settings
+                  cloud:
+                    type: object
+                    properties:
+                      region:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                            description: Name of region
+                        description: Region details
+                    description: Cloud infrastructure details
+      tags:
+        - read
+    delete:
+      operationId: deleteOrganization
+      description: Removes the organization with the provided identifier
+      summary: Delete Organization
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+            example: Amsterdam
+          required: true
+          description: Organization Identifier
       responses:
         '204':
-          description: Successful operation
-      summary: Delete an organization
+          description: Success
       tags:
-        - configure
-
+        - configure 
+  
 tags:
   - name: read
+    description: "Read Operations"
   - name: configure
+    description: "Read/Write Operations"
