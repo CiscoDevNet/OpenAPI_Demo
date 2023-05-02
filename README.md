@@ -26,7 +26,7 @@ API Insights shows gaps with completeness of Contract and Documentation but also
 
 We’re sending the findings report back to the engineering team and ask to fix for their next release. 
 
-A month later, the engineering team has made progress with the new release and sends the updated OpenAPI document – v1.23.0. They provide a note saying they fixed the Offensive Terms and expanded the OpenAPI document. 
+**A month later**, the engineering team has made progress with the new release and sends the updated OpenAPI document – v1.23.0. They provide a note saying they fixed the Offensive Terms and expanded the OpenAPI document. 
 
 We load the new OAS document 1.23.0 - rev1 into API Insights  
 
@@ -34,7 +34,7 @@ API Insights shows progress: 100% inclusive language, but uncomplete for contrac
 
 We’re sending the findings reports to the engineering group and asking to fix before 1.23.0 GA release.
 
-Team comes back with the new OpenAPI document and once loaded in API Insights, it shows 100% complete for contract.
+Team comes back with the new OpenAPI document **a week later** and once loaded in API Insights, it shows 100% complete for contract.
 
 We mark revision 1.23.0-rev2 as 'release' in API Insights as the API goes into production.
 
@@ -47,6 +47,7 @@ First we check for the score, including 100% completeness of the API Contract.
 > note that API Contracts must be 100% for valid findings - and once contract completeness is reached, API Insights can become the source of truth for changelogs and backward compatibility, but also to provide accurate documentation and confirm drifts and phantoms from live traffic observation).
 
 Now let's look at backward compatibility: we see the operation added but also a breaking change introduced. We inform engineering so that they fix before release.  
+
 
 ### Going further
 
