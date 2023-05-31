@@ -1,28 +1,29 @@
 # API Insights Preview Demo 
 
-These OAS documents illustrate the engineering story for the API Insights Preview at Cisco Live Amsterdam
+The OpenAPI documents in this repos are used to illustrate the collaboration between a technical lead and an engineering team working on the next release of their API.
 
 ## Quick steps
 
-The [OAS changelog](./CHANGELOG.md) details the mutiple versions of OpenAPI documents handed over by the Dashboard API engineering team.
+The [OAS changelog](./CHANGELOG.md) details the multiple versions of OpenAPI documents handed over by the engineering team.
 
-Open Chrome and import revision [1.22.0-rev1](oas/1.22.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io)
+Open Chrome and import revision [1.22.0-rev1](oas/1.22.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io) or [Swagger vNext](https://editor-next.swagger.io).
 
-Explore the OpenAPI documents scores in API Insights [preview environment](https://testing-developer.cisco.com/api-insights-cisco/timeline?service=minidashboard_api)
+Explore the OpenAPI documents scores in API Insights [preview environment](https://developer.cisco.com/api-insights-preprod/timeline?service=demo--minidashboard_api).
 
 Open a different web browser (Firefox) and load revision [1.24.0-rev1](oas/1.24.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io)
 
-note: for further details, check the [demo playbook](https://cisco.sharepoint.com/:w:/r/sites/DevRelTeam/_layouts/15/doc2.aspx?sourcedoc=%7BFD1D65C8-4190-41A9-8FC0-7550ACA996BA%7D&file=API%20Insights%20Demo%20talk%20and%20flow.docx&action=default&mobileredirect=true&cid=6ae18af4-2f9e-4f78-b43a-a97fb0e7a835)
 
 ## User Story
 
-Development teams have an API in production for some time, SRE teams (may also be organization CTO office or a technical lead responsible to review) have asked for the OpenAPI definition of the API. An OpenAPI document was provided to us. 
+An engineering group has an API in production for some time.
+We are an SRE team (may also be an SRE organization CTO office or a group of technical leads responsible to review) and have asked for the OpenAPI definition of the API.
+An OpenAPI document was provided back to us. 
 
 Let’s look at it with SwaggerEditor, looks good? Shows revision number 1.22.0 
 
 Now let’s loaded into API Insights with 1.22.0 as rev1.
 
-API Insights shows gaps with completeness of Contract and Documentation but also Design Guidelines and Offensive Terms. We will be leaving REST guidelines out for the rest of this  demonstration. 
+API Insights shows gaps with completeness of Contract and Documentation but also Design Guidelines and Offensive Terms. We will be leaving REST guidelines out for the rest of this demonstration. 
 
 We’re sending the findings report back to the engineering team and ask to fix for their next release. 
 
@@ -63,12 +64,5 @@ API Insights was instrumental to provide tips to get to 100% completeness for th
 
 Finally, API Insights prevented us from introducing a breaking change for the next release of the API. 
 
-Note: API Insights can also help with Design Conventions using a spectral ruleset defined for your organizations. And Panoptica can complement API Insights by providing security insights via both static analysis of contracts (is the API using your organization policies) but also via live traffic observations to ensure there are no drift related to security and zombies or shadow APIs 
-
- 
-
-
-
-
-
+Note: API Insights can also help with Design Conventions using a spectral ruleset defined for your organizations. Also Panoptica can complement API Insights by providing security insights via both static analysis of contracts (is the API using your organization policies) but also via live traffic observations to ensure there are no drift related to security and zombies or shadow APIs 
 
