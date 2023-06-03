@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.23.0-Rev.1
+  version: 1.23.0-Rev.2
   title: IncrementalSteps MiniDashboard API
   description: >
     The MiniDashboard API is a modern REST API based on the OpenAPI
@@ -76,6 +76,18 @@ paths:
                               description: Name of region
                           description: Region info
                       description: Data for this organization
+        '401': 
+          description: unauthorized
+        '429': 
+          description: too many requests
+        '500':
+          description: internal service error
+        '502':
+          description: bad gateway
+        '503':
+          description: service unavailable
+        '504':
+          description: gateway timeout
       summary: List the organizations that the user has privileges on
       tags:
         - read
@@ -140,6 +152,22 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+        '400': 
+          description: bad request
+        '401': 
+          description: unauthorized
+        '403': 
+          description: forbidden
+        '429': 
+          description: too many requests
+        '500':
+          description: internal service error
+        '502':
+          description: bad gateway
+        '503':
+          description: service unavailable
+        '504':
+          description: gateway timeout
       summary: Create a new organization
       tags:
         - configure
@@ -199,6 +227,20 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+        '401': 
+          description: unauthorized
+        '403': 
+          description: forbidden
+        '429': 
+          description: too many requests
+        '500':
+          description: internal service error
+        '502':
+          description: bad gateway
+        '503':
+          description: service unavailable
+        '504':
+          description: gateway timeout
       summary: Return an organization
       tags:
         - read
@@ -273,6 +315,22 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+        '400': 
+          description: bad request
+        '401': 
+          description: unauthorized
+        '403': 
+          description: forbidden
+        '429': 
+          description: too many requests
+        '500':
+          description: internal service error
+        '502':
+          description: bad gateway
+        '503':
+          description: service unavailable
+        '504':
+          description: gateway timeout
       summary: Update an organization
       tags:
         - configure
@@ -288,6 +346,20 @@ paths:
       responses:
         '204':
           description: Successful operation
+        '401': 
+          description: unauthorized
+        '403': 
+          description: forbidden
+        '429': 
+          description: too many requests
+        '500':
+          description: internal service error
+        '502':
+          description: bad gateway
+        '503':
+          description: service unavailable
+        '504':
+          description: gateway timeout
       summary: Delete an organization
       tags:
         - configure 
