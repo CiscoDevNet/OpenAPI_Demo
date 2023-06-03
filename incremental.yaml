@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.25.0-Rev.3
+  version: 1.25.0-Rev.4
   title: IncrementalSteps MiniDashboard API
   description: >
     The MiniDashboard API is a modern REST API based on the OpenAPI
@@ -80,7 +80,7 @@ paths:
               example:
                 - id: '2930418'
                   name: My organization
-                  url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                  url: https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview
                   api:
                     enabled: true
                   licensing:
@@ -170,7 +170,7 @@ paths:
               example:
                 id: '2930418'
                 name: My organization
-                url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                url: https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview
                 api:
                   enabled: true
                 licensing:
@@ -257,7 +257,7 @@ paths:
               example:
                 id: '2930418'
                 name: My organization
-                url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                url: https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview
                 api:
                   enabled: true
                 licensing:
@@ -307,7 +307,7 @@ paths:
                   properties:
                     enabled:
                       type: boolean
-                      description: If true, enable the access to the Incremental Dashboard API
+                      description: If true, enable the access to the Cisco Meraki Dashboard API
                   description: API-specific settings
             example:
               name: My organization
@@ -362,7 +362,7 @@ paths:
               example:
                 id: '2930418'
                 name: My organization
-                url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                url: https://dashboard.meraki.com/o/VjjsAd/manage/organization/overview
                 api:
                   enabled: true
                 licensing:
