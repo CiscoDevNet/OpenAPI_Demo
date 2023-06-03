@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.25.0-Rev.2
+  version: 1.25.0-Rev.3
   title: IncrementalSteps MiniDashboard API
   description: >
     The MiniDashboard API is a modern REST API based on the OpenAPI
@@ -77,6 +77,17 @@ paths:
                               description: Name of region
                           description: Region info
                       description: Data for this organization
+              example:
+                - id: '2930418'
+                  name: My organization
+                  url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                  api:
+                    enabled: true
+                  licensing:
+                    model: co-term
+                  cloud:
+                    region:
+                      name: North America
         '401': 
           description: unauthorized
         '429': 
@@ -107,6 +118,8 @@ paths:
                   description: The name of the organization
               required:
                 - name
+            example:
+              name: My organization
         required: true
       responses:
         '201':
@@ -154,6 +167,17 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+              example:
+                id: '2930418'
+                name: My organization
+                url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                api:
+                  enabled: true
+                licensing:
+                  model: co-term
+                cloud:
+                  region:
+                    name: North America
         '400': 
           description: bad request
         '401': 
@@ -230,6 +254,17 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+              example:
+                id: '2930418'
+                name: My organization
+                url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                api:
+                  enabled: true
+                licensing:
+                  model: co-term
+                cloud:
+                  region:
+                    name: North America
         '401': 
           description: unauthorized
         '403': 
@@ -274,6 +309,10 @@ paths:
                       type: boolean
                       description: If true, enable the access to the Incremental Dashboard API
                   description: API-specific settings
+            example:
+              name: My organization
+              api:
+                enabled: true
       responses:
         '200':
           description: Successful operation
@@ -320,6 +359,17 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+              example:
+                id: '2930418'
+                name: My organization
+                url: https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                api:
+                  enabled: true
+                licensing:
+                  model: co-term
+                cloud:
+                  region:
+                    name: North America
         '400': 
           description: bad request
         '401': 
