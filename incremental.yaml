@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.23.0-Rev.2
+  version: 1.24.0-Rev.1
   title: IncrementalSteps MiniDashboard API
   description: >
     The MiniDashboard API is a modern REST API based on the OpenAPI
@@ -95,6 +95,7 @@ paths:
       description: Create a new organization
       operationId: createOrganization
       requestBody:
+        description: organization to create
         content:
           application/json:
             schema:
@@ -254,6 +255,7 @@ paths:
             type: string
           required: true
       requestBody:
+        description: organization to update
         content:
           application/json:
             schema:   
