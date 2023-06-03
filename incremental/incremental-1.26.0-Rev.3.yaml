@@ -18,7 +18,7 @@ security:
   - mini_api_key: []
 components:
   securitySchemes:
-   mini_api_key:
+    mini_api_key:
       type: apiKey
       name: X-Incremental-Dashboard-API-Key
       in: header

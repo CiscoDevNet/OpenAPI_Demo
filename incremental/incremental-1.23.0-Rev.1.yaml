@@ -3,8 +3,8 @@ info:
   version: 1.23.0-Rev.1
   title: IncrementalSteps MiniDashboard API
   description: >
-    The MiniDashboard API is a modern REST API based on the OpenAPI
-    specification. [Recent Updates](https://developer.cisco.com/api-insights)
+    The IncrementalSteps API is a modern REST API based on the OpenAPI
+    specification. Date: 01 October, 2022. [Recent Updates](https://developer.cisco.com/api-insights)
   contact:
     name: Developer Community
     url: https://developer.cisco.com
