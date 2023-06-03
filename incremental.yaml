@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  version: 1.25.0-Rev.1
+  version: 1.25.0-Rev.2
   title: IncrementalSteps MiniDashboard API
   description: >
     The MiniDashboard API is a modern REST API based on the OpenAPI
@@ -22,6 +22,7 @@ components:
       type: apiKey
       name: X-Incremental-Dashboard-API-Key
       in: header
+      description: "API Key HTTP Header"
       
 paths:
   /organizations:
@@ -271,7 +272,7 @@ paths:
                   properties:
                     enabled:
                       type: boolean
-                      description: If true, enable the access to the Cisco Incremental Dashboard API
+                      description: If true, enable the access to the Incremental Dashboard API
                   description: API-specific settings
       responses:
         '200':
