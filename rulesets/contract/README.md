@@ -1,3 +1,6 @@
+# Spectral example
+
+This example uses the Contract analyzer of API Insights
 
 ```shell
 # Example of a successful contract
