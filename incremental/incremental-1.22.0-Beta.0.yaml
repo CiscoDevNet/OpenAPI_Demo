@@ -1,18 +1,18 @@
 openapi: 3.0.0
 info:
-  version: 1.22.0
-  title: Mini Dashboard API
+  version: 1.22.0-Beta.0
+  title: IncrementalSteps MiniDashboard API
   description: >
-    The Mini Dashboard API is a modern REST API based on the OpenAPI
-    specification. Date: September 9th, 2022. [Recent Updates](https://mini.io/whats-new/)
+    The MiniDashboard API is a modern REST API based on the OpenAPI
+    specification. [Recent Updates](https://developer.cisco.com/api-insights)
   contact:
-    name: Mini Dashboard Developer Community
-    url: https://mini.io/community
+    name: Developer Community
+    url: https://developer.cisco.com
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: https://api.mini.com/api/v1
+  - url: https://incrementalsteps.com/api/v1
 
 security:
   - mini_api_key: []
@@ -20,20 +20,19 @@ components:
   securitySchemes:
     mini_api_key:
       type: apiKey
-      name: X-Mini-Dashboard-API-Key
+      name: X-Incremental-Dashboard-API-Key
       in: header
-      description: Secret to access the API
 
 paths:
   /organizations:
     get:
-      description: List the organizations that the user has privileges on whitelist
+      description: List the organizations that the user has privileges on
       operationId: getOrganizations
       responses:
         '200':
           description: Successful operation
           content:
-            application/json:
+            '*/*':
               schema:
                 type: array
                 items:
@@ -79,6 +78,7 @@ paths:
                               description: Name of region
                           description: Region info
                       description: Data for this organization
+            application/json:
               examples:
                 response:
                   value:
@@ -93,7 +93,7 @@ paths:
                       cloud:
                         region:
                           name: North America
-      summary: List organizations
+      summary: List the organizations that the user has privileges on
       tags:
         - read
     post:
@@ -115,9 +115,10 @@ paths:
         '201':
           description: Successful operation
           content:
-            application/json:
+            '*/*':
               schema:
                 type: object
+            application/json:
               examples:
                 successResponse:
                   value:
@@ -146,7 +147,7 @@ paths:
         '200':
           description: Successful operation
           content:
-            application/json:
+            '*/*':
               schema:
                 type: object
                 properties:
@@ -190,6 +191,7 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
+            application/json:
               examples:
                 response:
                   value:
@@ -207,6 +209,57 @@ paths:
       summary: Return an organization
       tags:
         - read
+    put:
+      description: Update an organization
+      operationId: updateOrganization
+      parameters:
+        - name: organizationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The name of the organization
+                api:
+                  type: object
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: >-
+                        If true, enable the access to the Mini Dashboard
+                        API
+                  description: API-specific settings
+              example:
+                name: My organization
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            '*/*':
+              schema:
+                type: object
+            application/json:
+              examples:
+                response:
+                  value:
+                    id: '2930418'
+                    name: My organization
+                    url: >-
+                      https://dashboard.mini.com/o/VjjsAd/manage/organization/overview
+                    api:
+                      enabled: true
+                    licensing:
+                      model: co-term
+      summary: Update an organization
+      tags:
+        - configure
     delete:
       description: Delete an organization
       operationId: deleteOrganization

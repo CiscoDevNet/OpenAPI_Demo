@@ -1,14 +1,13 @@
 openapi: 3.0.0
 info:
-  version: 1.23.0
-  title: Mini Dashboard API
+  version: 1.23.0-rev1
+  title: Compliance MiniDashboard API
   description: >
-    The Mini Dashboard API is a modern REST API based on the OpenAPI
-    specification. Date: November 6, 2022. [Recent
-    Updates](https://mini.io/whats-new/)
+    The MiniDashboard API is a modern REST API based on the OpenAPI
+    specification. Date: October 7th. [Recent Updates](https://developer.cisco.com/api-insights)
   contact:
-    name: Mini Dashboard Developer Community
-    url: https://mini.io/community
+    name: Developer Community
+    url: https://developer.cisco.com
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
@@ -79,41 +78,6 @@ paths:
                               description: Name of theregion
                           description: Region details
                       description: Cloud infrastructure details
-              examples:
-                CiscoOffices:
-                  value:
-                    - id: SanFrancisco
-                      name: San Francisco HeadQuarters
-                      url: https://dashboard.mini.com/o/SanFrancisco/manage/organization/overview
-                      api:
-                        enabled: true
-                      licensing:
-                        model: subscription
-                      cloud:
-                        region:
-                          name: North America
-                    - id: Amsterdam
-                      name: Amsterdam Office
-                      url: https://dashboard.mini.com/o/Amsterdam/manage/organization/overview
-                      api:
-                        enabled: true
-                      licensing:
-                        model: co-term
-                      cloud:
-                        region:
-                          name: "EMEAR"
-        '401': 
-          description: Unauthorized
-        '429': 
-          description: Too many requests
-        '500':
-          description: Internal service error
-        '502':
-          description: Bad gateway
-        '503':
-          description: Service unavailable
-        '504':
-          description: Gateway timeout
       tags:
         - read
     post:
@@ -185,35 +149,6 @@ paths:
                             description: Name of region
                         description: Region info
                     description: Data for this organization
-              examples:
-                Amsterdam:
-                  value:
-                    id: Amsterdam
-                    name: Amsterdam Office
-                    url: https://dashboard.mini.com/o/Amsterdam/manage/organization/overview
-                    api:
-                      enabled: true
-                    licensing:
-                      model: co-term
-                    cloud:
-                      region:
-                        name: EMEAR
-        '400': 
-          description: Bad request
-        '401': 
-          description: Unauthorized
-        '403': 
-          description: Forbidden
-        '429': 
-          description: Too many requests
-        '500':
-          description: Internal service error
-        '502':
-          description: Bad gateway
-        '503':
-          description: Service unavailable
-        '504':
-          description: Gateway timeout
       tags:
         - configure
   /organizations/{id}:
@@ -275,33 +210,6 @@ paths:
                             description: Name of region
                         description: Region details
                     description: Cloud infrastructure details
-              examples:
-                SanFrancisco:
-                  value:
-                    id: SanFrancisco
-                    name: San Francisco HeadQuarters 
-                    url: https://dashboard.mini.com/o/SanFrancisco/manage/organization/overview
-                    api:
-                      enabled: true
-                    licensing:
-                      model: co-term
-                    cloud:
-                      region:
-                        name: North America
-        '401': 
-          description: Unauthorized
-        '403': 
-          description: Forbidden
-        '429': 
-          description: Too many requests
-        '500':
-          description: Internal service error
-        '502':
-          description: Bad gateway
-        '503':
-          description: Service unavailable
-        '504':
-          description: Gateway timeout
       tags:
         - read
     delete:
@@ -319,20 +227,6 @@ paths:
       responses:
         '204':
           description: Success
-        '401': 
-          description: Unauthorized
-        '403': 
-          description: Forbidden
-        '429': 
-          description: Too many requests
-        '500':
-          description: Internal service error
-        '502':
-          description: Bad gateway
-        '503':
-          description: Service unavailable
-        '504':
-          description: Gateway timeout
       tags:
         - configure 
   

@@ -1,0 +1,7 @@
+functions: [abc]
+rules:
+  my-rule:
+    message: "{{error}}"
+    given: "$.greeting.message"
+    then:
+      function: "abc"
