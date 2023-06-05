@@ -57,7 +57,7 @@ paths:
                         enabled:
                           type: boolean
                           description: Enable API access
-                      description: API settings"
+                      description: API settings
                     licensing:
                       type: object
                       properties:
