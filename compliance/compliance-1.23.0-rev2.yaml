@@ -4,7 +4,8 @@ info:
   title: Compliance MiniDashboard API
   description: >
     The MiniDashboard API is a modern REST API based on the OpenAPI
-    specification. Date: November 6th. [Recent Updates](https://developer.cisco.com/api-insights)
+    specification. 
+    [Recent Updates](https://developer.cisco.com/api-insights)
   contact:
     name: Developer Community
     url: https://developer.cisco.com
@@ -12,7 +13,8 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
 servers:
-  - url: https://api.mini.com/api/v1
+  - url: https://compliance.io/api/v1
+
 
 security:
   - mini_api_key: []
@@ -55,7 +57,7 @@ paths:
                         enabled:
                           type: boolean
                           description: Enable API access
-                      description: API settings"
+                      description: API settings
                     licensing:
                       type: object
                       properties:

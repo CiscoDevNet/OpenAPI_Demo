@@ -4,9 +4,11 @@ This example uses the Contract analyzer of API Insights
 
 ```shell
 # Example of a successful contract
-> spectral lint --ruleset ruleset.yaml compliance-1.24.0-rev1.yaml -v Found 59 rules (10 enabled)
+> spectral lint --ruleset ruleset.yaml compliance-1.24.0-rev1.yaml -v 
 
+Found 59 rules (10 enabled)
 Linting /mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/API_Insights_Demo/rulesets/contract/compliance-1.24.0-rev1.yaml
+
 No results with a severity of 'error' found!
 ```
 
