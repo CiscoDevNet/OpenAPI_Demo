@@ -1,8 +1,10 @@
-functions: [abc]
+functions: [match]
 rules:
   my-rule:
     message: "{{error}}"
     given: "$.greeting.message"
     then:
-      function: "abc"
+      function: "match"
+      functionOptions:
+        match: "hello"
         
