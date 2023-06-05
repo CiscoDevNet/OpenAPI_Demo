@@ -1,16 +1,16 @@
 # API Insights Preview Demo 
 
-The OpenAPI documents in this repos are used to illustrate the collaboration between a technical lead and an engineering team working on the next release of their API.
+The OpenAPI documents in this repo are used to illustrate the collaboration between a technical lead and an engineering team working on the next release of their API.
 
 ## Quick steps
 
-The [OAS changelog](./CHANGELOG.md) details the multiple versions of OpenAPI documents handed over by the engineering team.
+The [changelog](./compliance/CHANGELOG.md) details the multiple versions of OpenAPI documents handed over by the engineering team.
 
-Open Chrome and import revision [1.22.0-rev1](oas/1.22.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io) or [Swagger vNext](https://editor-next.swagger.io).
+Open Chrome and import revision [1.22.0-rev1](./compliance/compliance-1.22.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io).
 
 Explore the OpenAPI documents scores in API Insights [preview environment](https://developer.cisco.com/api-insights-preprod/timeline?service=demo--minidashboard_api).
 
-Open a different web browser (Firefox) and load revision [1.24.0-rev1](oas/1.24.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io)
+Open a different web browser (Firefox) and load revision [1.24.0-rev1](./compliance/compliance-1.24.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io)
 
 
 ## User Story
@@ -52,9 +52,10 @@ Now let's look at backward compatibility: we see the operation added but also a 
 
 ### Going further
 
+* integrating with engineering CI/CD pipeline, the gaps would be identified automatically 
+
 * using the API Insights Visual Studio Code Extension, this flow would be simplified because engineering can spot gaps early on. 
 
-* integrating with engineering CI/CD pipeline, the gaps would be identified automatically 
 
 ### Wrap up
 
