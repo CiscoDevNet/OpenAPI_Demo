@@ -1,0 +1,22 @@
+extends:
+  - [spectral:oas, off]
+functions: [completedSchema]
+rules:
+  oas3-schema: error
+  generic-schema:
+    description: >-
+      Some schema use object as a final field instead of fully describing
+      a structure.
+    message: '{{description}}; {{error}}'
+    severity: error
+    formats:
+      - oas3
+    given:
+      - $.paths.*.*.*.*.content[?(@ && @.schema)].schema
+      - $.paths.*.*.*.content[?(@ && @.schema)].schema
+      - $.paths.*.*.responses[*].headers[?(@ && @.schema)].schema
+      - $.paths.*.*.parameters[?(@ && @.schema)].schema
+      - $.paths.*.*.responses[?(@ && @.schema)].schema
+      - $.paths.*.*.parameters[?(@ && @.schema && @.in === 'body')].schema
+    then:
+      - function: completedSchema

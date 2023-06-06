@@ -132,6 +132,8 @@ paths:
       summary: Create a new organization
       tags:
         - configure
+
+
   /organizations/{organizationId}:
     get:
       description: Return an organization

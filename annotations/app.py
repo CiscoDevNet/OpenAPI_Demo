@@ -3,7 +3,9 @@ from apiflask.fields import Integer, String
 from apiflask.validators import Length, OneOf
 
 # set openapi.info.title and openapi.info.version
-app = APIFlask(__name__, title='Pet API', version='1.0.0')
+app = APIFlask(__name__, title='Pet API', version='1.0.0', spec_path='/openapi')
+app.config['SPEC_FORMAT'] = 'yaml'
+app.config['AUTO_OPERATION_ID'] = True
 
 # All the OpenAPI field config can be set with the corresponding attributes of the app instance:
 # app.description = '...'
@@ -20,7 +22,7 @@ tags under the "examples/blueprint_tags" folder:
 # openapi.info.contact
 app.config['CONTACT'] = {
     'name': 'API Support',
-    'url': 'developer.cisco.com'
+    'url': 'https://developer.cisco.com'
 }
 
 # openapi.info.license
@@ -187,3 +189,4 @@ def delete_pet(pet_id):
     pets[pet_id]['deleted'] = True
     pets[pet_id]['name'] = 'Ghost'
     return ''
+

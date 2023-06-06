@@ -2,7 +2,7 @@
   "info": {
     "contact": {
       "name": "API Support",
-      "url": "developer.cisco.com"
+      "url": "https://developer.cisco.com"
     },
     "license": {
       "name": "MIT",
@@ -51,7 +51,8 @@
           "Hello"
         ],
         "summary": "Just Say Hello",
-        "description": "It will always return a greeting like this:\n```\n{'message': 'Hello!'}\n```"
+        "description": "It will always return a greeting like this:\n```\n{'message': 'Hello!'}\n```",
+        "operationId": "get_say_hello"
       }
     },
     "/pets": {
@@ -76,7 +77,8 @@
           "Pet"
         ],
         "summary": "Get All Pet",
-        "description": "Get all pets in the database."
+        "description": "Get all pets in the database.",
+        "operationId": "get_get_pets"
       },
       "post": {
         "parameters": [],
@@ -115,6 +117,7 @@
         ],
         "summary": "Create a Pet",
         "description": "Create a pet with given data. The created pet will be returned.",
+        "operationId": "post_create_pet",
         "requestBody": {
           "content": {
             "application/json": {
@@ -215,6 +218,7 @@
         ],
         "summary": "Update a Pet",
         "description": "Update a pet with given data, the valid fields are `name` and `category`.",
+        "operationId": "patch_update_pet",
         "requestBody": {
           "content": {
             "application/json": {
@@ -255,7 +259,8 @@
           "Pet"
         ],
         "summary": "Delete a Pet",
-        "description": "Delete a pet with specific ID. The deleted pet will be renamed to `\"Ghost\"`."
+        "description": "Delete a pet with specific ID. The deleted pet will be renamed to `\"Ghost\"`.",
+        "operationId": "delete_delete_pet"
       }
     }
   },
