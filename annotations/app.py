@@ -113,11 +113,11 @@ def say_hello():
 
 @app.get('/pets/<int:pet_id>')
 @app.output(PetOut, description='The pet with given ID')
-@app.doc(tags=['Pet'], operation_id='getPet')
+@app.doc(tags=['Pet'], operation_id='getPetDetails')
 def get_pet(pet_id):
     """Get a Pet
 
-    Get a pet with specific ID.
+    Get details for the pet with `pet_id` identifier.
     """
     if pet_id > len(pets) - 1 or pets[pet_id].get('deleted'):
         abort(404)

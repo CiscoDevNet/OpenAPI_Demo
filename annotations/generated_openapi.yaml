@@ -125,8 +125,8 @@ paths:
       tags:
       - Pet
       summary: Get a Pet
-      description: Get a pet with specific ID.
-      operationId: getPet
+      description: Get details for the pet with `pet_id` identifier.
+      operationId: getPetDetails
     patch:
       parameters:
       - in: path
