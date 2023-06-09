@@ -14,9 +14,12 @@ Download and add to your path the latest yq release from: https://github.com/mik
 ## Quick start
 
 ```shell
+# Copy an existing OpenAPI document 
+cp ../annotations/generated_openapi.yaml ./openapi.yaml
+
 # Sort the different sections/subsections of the OpenAPI document
-openapi-format --sortFile config_sort.json openapi.yaml --output openapi_sorted.yaml
+openapi-format --configFile config_sort.json openapi.yaml --output openapi_sorted.yaml
 
 # Reorder values by alphabetical for particular OpenAPI attributes
- yq 'sort_keys(.components.schemas)' openapi_sorted.yaml > openapi_sorted_components.yaml
+yq 'sort_keys(.components.schemas)' openapi_sorted.yaml > openapi_sorted_components.yaml
 ```

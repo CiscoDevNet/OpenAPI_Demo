@@ -11,23 +11,25 @@ info:
     The description for this API. It can be very long and **Markdown** is supported.
 
 
-    In this example, the tags is manually set. However, in a real world application, it will be
+    In this example, the tags is manually set. However, in a real world application,
+    it will be
 
-    enough to use the automatic tags feature based on blueprint, see the example for blueprint
+    enough to use the automatic tags feature based on blueprint, see the example for
+    blueprint
 
     tags under the "examples/blueprint_tags" folder:
 
-'
+    '
   title: Pet API
   version: 1.0.0
 tags:
-  - name: Hello
-    description: The description of the **Hello** tag.
-  - name: Pet
-    description: The description of the **Pet** tag.
+- name: Hello
+  description: The description of the **Hello** tag.
+- name: Pet
+  description: The description of the **Pet** tag.
 servers:
-  - description: Development Server
-    url: http://localhost:5000
+- description: Development Server
+  url: http://localhost:5000
 externalDocs:
   description: Find more info here
   url: https://apiflask.com/docs
@@ -42,7 +44,7 @@ paths:
               schema: {}
           description: Successful response
       tags:
-        - Hello
+      - Hello
       summary: Just Say Hello
       description: 'It will always return a greeting like this:
 
@@ -65,7 +67,7 @@ paths:
                   $ref: '#/components/schemas/PetOut'
           description: A list of pets
       tags:
-        - Pet
+      - Pet
       summary: Get All Pet
       description: Get all pets in the database.
       operationId: get_get_pets
@@ -90,7 +92,7 @@ paths:
                 $ref: '#/components/schemas/ValidationError'
           description: Validation error
       tags:
-        - Pet
+      - Pet
       summary: Create a Pet
       description: Create a pet with given data. The created pet will be returned.
       operationId: post_create_pet
@@ -102,11 +104,11 @@ paths:
   /pets/{pet_id}:
     get:
       parameters:
-        - in: path
-          name: pet_id
-          schema:
-            type: integer
-          required: true
+      - in: path
+        name: pet_id
+        schema:
+          type: integer
+        required: true
       responses:
         '200':
           content:
@@ -121,17 +123,17 @@ paths:
                 $ref: '#/components/schemas/HTTPError'
           description: Not found
       tags:
-        - Pet
+      - Pet
       summary: Get a Pet
       description: Get details for the pet with `pet_id` identifier.
       operationId: getPetDetails
     patch:
       parameters:
-        - in: path
-          name: pet_id
-          schema:
-            type: integer
-          required: true
+      - in: path
+        name: pet_id
+        schema:
+          type: integer
+        required: true
       responses:
         '200':
           content:
@@ -152,7 +154,7 @@ paths:
                 $ref: '#/components/schemas/HTTPError'
           description: Not found
       tags:
-        - Pet
+      - Pet
       summary: Update a Pet
       description: Update a pet with given data, the valid fields are `name` and `category`.
       operationId: patch_update_pet
@@ -163,11 +165,11 @@ paths:
               $ref: '#/components/schemas/PetInUpdate'
     delete:
       parameters:
-        - in: path
-          name: pet_id
-          schema:
-            type: integer
-          required: true
+      - in: path
+        name: pet_id
+        schema:
+          type: integer
+        required: true
       responses:
         '204':
           description: Empty
@@ -178,9 +180,10 @@ paths:
                 $ref: '#/components/schemas/HTTPError'
           description: Not found
       tags:
-        - Pet
+      - Pet
       summary: Delete a Pet
-      description: Delete a pet with specific ID. The deleted pet will be renamed to `"Ghost"`.
+      description: Delete a pet with specific ID. The deleted pet will be renamed
+        to `"Ghost"`.
       operationId: delete_delete_pet
 openapi: 3.0.3
 components:
@@ -234,13 +237,13 @@ components:
         category:
           type: string
           enum:
-            - dog
-            - cat
+          - dog
+          - cat
           title: Pet Category
           description: The category of the pet.
       required:
-        - category
-        - name
+      - category
+      - name
     PetInUpdate:
       type: object
       properties:
@@ -253,7 +256,8 @@ components:
         category:
           type: string
           enum:
-            - dog
-            - cat
+          - dog
+          - cat
           title: Pet Category
           description: The category of the pet.
+

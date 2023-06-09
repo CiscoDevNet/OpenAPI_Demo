@@ -1,14 +1,5 @@
 openapi: 3.0.3
 info:
-  title: Pet API
-  description: |
-
-    The description for this API. It can be very long and **Markdown** is supported.
-
-    In this example, the tags is manually set. However, in a real world application, it will be
-    enough to use the automatic tags feature based on blueprint, see the example for blueprint
-    tags under the "examples/blueprint_tags" folder:
-  version: 1.0.0
   contact:
     name: API Support
     url: 'https://developer.cisco.com'
@@ -16,6 +7,15 @@ info:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
   termsOfService: 'http://example.com'
+  description: |
+
+    The description for this API. It can be very long and **Markdown** is supported.
+
+    In this example, the tags is manually set. However, in a real world application, it will be
+    enough to use the automatic tags feature based on blueprint, see the example for blueprint
+    tags under the "examples/blueprint_tags" folder:
+  title: Pet API
+  version: 1.0.0
 servers:
   - description: Development Server
     url: 'http://localhost:5000'
