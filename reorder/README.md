@@ -1,6 +1,6 @@
-# Normalizng OpenAPI document
+# Normalizing OpenAPI document
 
-Using `openapi-format`: see 
+Using `openapi-format`: see https://github.com/thim81/openapi-format
 and `yq`: see https://mikefarah.gitbook.io/yq/operators/sort-keys
 
 
