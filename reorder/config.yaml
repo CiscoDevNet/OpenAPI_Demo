@@ -1,0 +1,4 @@
+verbose: true
+sortFile: config_sort.json
+sortComponentsFile: config_sort_components.json
+output: output.json

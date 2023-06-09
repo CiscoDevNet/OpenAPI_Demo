@@ -1,0 +1,251 @@
+openapi: 3.0.3
+info:
+  title: Pet API
+  description: |2
+    The description for this API. It can be very long and **Markdown** is supported.
+
+    In this example, the tags is manually set. However, in a real world application, it will be
+    enough to use the automatic tags feature based on blueprint, see the example for blueprint
+    tags under the "examples/blueprint_tags" folder:
+  version: 1.0.0
+  contact:
+    name: API Support
+    url: 'https://developer.cisco.com'
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  termsOfService: 'http://example.com'
+servers:
+  - description: Development Server
+    url: 'http://localhost:5000'
+paths:
+  /:
+    get:
+      operationId: get_say_hello
+      summary: Just Say Hello
+      description: |-
+        It will always return a greeting like this:
+        ```
+        {'message': 'Hello!'}
+        ```
+      parameters: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema: {}
+      tags:
+        - Hello
+  /pets:
+    get:
+      operationId: get_get_pets
+      summary: Get All Pet
+      description: Get all pets in the database.
+      parameters: []
+      responses:
+        '200':
+          description: A list of pets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PetOut'
+      tags:
+        - Pet
+    post:
+      operationId: post_create_pet
+      summary: Create a Pet
+      description: Create a pet with given data. The created pet will be returned.
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetIn'
+      responses:
+        '201':
+          description: The pet you just created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOut'
+          links:
+            getPetById:
+              operationId: getPet
+              parameters:
+                pet_id: $response.body#/id
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      tags:
+        - Pet
+  '/pets/{pet_id}':
+    get:
+      operationId: getPetDetails
+      summary: Get a Pet
+      description: Get details for the pet with `pet_id` identifier.
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The pet with given ID
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOut'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPError'
+      tags:
+        - Pet
+    patch:
+      operationId: patch_update_pet
+      summary: Update a Pet
+      description: 'Update a pet with given data, the valid fields are `name` and `category`.'
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetInUpdate'
+      responses:
+        '200':
+          description: The updated pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOut'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPError'
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationError'
+      tags:
+        - Pet
+    delete:
+      operationId: delete_delete_pet
+      summary: Delete a Pet
+      description: Delete a pet with specific ID. The deleted pet will be renamed to `"Ghost"`.
+      parameters:
+        - name: pet_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Empty
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPError'
+      tags:
+        - Pet
+components:
+  schemas:
+    HTTPError:
+      type: object
+      properties:
+        detail:
+          type: object
+        message:
+          type: string
+    PetIn:
+      type: object
+      properties:
+        name:
+          description: The name of the pet.
+          type: string
+          maxLength: 10
+          minLength: 0
+          title: Pet Name
+        category:
+          description: The category of the pet.
+          type: string
+          enum:
+            - dog
+            - cat
+          title: Pet Category
+      required:
+        - category
+        - name
+    PetInUpdate:
+      type: object
+      properties:
+        name:
+          description: The name of the pet.
+          type: string
+          maxLength: 10
+          minLength: 0
+          title: Pet Name
+        category:
+          description: The category of the pet.
+          type: string
+          enum:
+            - dog
+            - cat
+          title: Pet Category
+    PetOut:
+      type: object
+      properties:
+        id:
+          description: The ID of the pet.
+          type: integer
+          title: Pet ID
+        name:
+          description: The name of the pet.
+          type: string
+          title: Pet Name
+        category:
+          description: The category of the pet.
+          type: string
+          title: Pet Category
+    ValidationError:
+      type: object
+      properties:
+        detail:
+          type: object
+          properties:
+            <location>:
+              type: object
+              properties:
+                <field_name>:
+                  type: array
+                  items:
+                    type: string
+        message:
+          type: string
+tags:
+  - name: Hello
+    description: The description of the **Hello** tag.
+  - name: Pet
+    description: The description of the **Pet** tag.
+externalDocs:
+  description: Find more info here
+  url: 'https://apiflask.com/docs'
