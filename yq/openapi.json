@@ -1,0 +1,332 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.22.0-rev1",
+    "title": "Compliance MiniDashboard API",
+    "description": "The MiniDashboard API is a modern REST API based on the OpenAPI specification.  [Recent Updates](https://developer.cisco.com/api-insights)\n",
+    "contact": {
+      "name": "Developer Community",
+      "url": "https://developer.cisco.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://compliance.io/api/v1"
+    }
+  ],
+  "security": [
+    {
+      "mini_api_key": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "mini_api_key": {
+        "type": "apiKey",
+        "name": "X-Mini-Dashboard-API-Key",
+        "in": "header",
+        "description": "Secret to access the API"
+      }
+    }
+  },
+  "paths": {
+    "/organizations": {
+      "get": {
+        "description": "List the organizations that the user has privileges on whitelist",
+        "operationId": "getOrganizations",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "description": "Organization ID"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Organization name"
+                      },
+                      "url": {
+                        "type": "string",
+                        "description": "Organization URL"
+                      },
+                      "api": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "description": "Enable API access"
+                          }
+                        },
+                        "description": "API related settings"
+                      },
+                      "licensing": {
+                        "type": "object",
+                        "properties": {
+                          "model": {
+                            "type": "string",
+                            "enum": [
+                              "co-term",
+                              "per-device",
+                              "subscription"
+                            ],
+                            "description": "Organization licensing model. Can be 'co-term', 'per-device', or 'subscription'."
+                          }
+                        },
+                        "description": "Licensing related settings"
+                      },
+                      "cloud": {
+                        "type": "object",
+                        "properties": {
+                          "region": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string",
+                                "description": "Name of region"
+                              }
+                            },
+                            "description": "Region info"
+                          }
+                        },
+                        "description": "Data for this organization"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "value": [
+                      {
+                        "id": "2930418",
+                        "name": "My organization",
+                        "url": "https://dashboard.mini.com/o/VjjsAd/manage/organization/overview",
+                        "api": {
+                          "enabled": true
+                        },
+                        "licensing": {
+                          "model": "co-term"
+                        },
+                        "cloud": {
+                          "region": {
+                            "name": "North America"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "List organizations",
+        "tags": [
+          "read"
+        ]
+      },
+      "post": {
+        "description": "Create a new organization",
+        "operationId": "createOrganization",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "The name of the organization"
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "successResponse": {
+                    "value": {
+                      "id": "2930418",
+                      "name": "My organization",
+                      "url": "https://dashboard.mini.com/o/VjjsAd/manage/organization/overview",
+                      "api": {
+                        "enabled": true
+                      },
+                      "licensing": {
+                        "model": "co-term"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create a new organization",
+        "tags": [
+          "configure"
+        ]
+      }
+    },
+    "/organizations/{organizationId}": {
+      "get": {
+        "description": "Return an organization",
+        "operationId": "getOrganization",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "description": "Organization ID"
+                    },
+                    "name": {
+                      "type": "string",
+                      "description": "Organization name"
+                    },
+                    "url": {
+                      "type": "string",
+                      "description": "Organization URL"
+                    },
+                    "api": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "description": "Enable API access"
+                        }
+                      },
+                      "description": "API related settings"
+                    },
+                    "licensing": {
+                      "type": "object",
+                      "properties": {
+                        "model": {
+                          "type": "string",
+                          "enum": [
+                            "co-term",
+                            "per-device",
+                            "subscription"
+                          ],
+                          "description": "Organization licensing model. Can be 'co-term', 'per-device', or 'subscription'."
+                        }
+                      },
+                      "description": "Licensing related settings"
+                    },
+                    "cloud": {
+                      "type": "object",
+                      "properties": {
+                        "region": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "description": "Name of region"
+                            }
+                          },
+                          "description": "Region info"
+                        }
+                      },
+                      "description": "Data for this organization"
+                    }
+                  }
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "id": "2930418",
+                      "name": "My organization",
+                      "url": "https://dashboard.mini.com/o/VjjsAd/manage/organization/overview",
+                      "api": {
+                        "enabled": true
+                      },
+                      "licensing": {
+                        "model": "co-term"
+                      },
+                      "cloud": {
+                        "region": {
+                          "name": "North America"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Return an organization",
+        "tags": [
+          "read"
+        ]
+      },
+      "delete": {
+        "description": "Delete an organization",
+        "operationId": "deleteOrganization",
+        "parameters": [
+          {
+            "name": "organizationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful operation"
+          }
+        },
+        "summary": "Delete an organization",
+        "tags": [
+          "configure"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "read"
+    },
+    {
+      "name": "configure"
+    }
+  ]
+}
