@@ -9,7 +9,7 @@ The [changelog](CHANGELOG.md) details the multiple versions of OpenAPI documents
 
 Open Chrome and import revision [1.22.0-rev1](compliance-1.22.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io).
 
-Explore the OpenAPI documents scores in API Insights [preview environment](https://developer.cisco.com/api-insights-preprod/timeline?service=demo--minidashboard_api).
+Explore the OpenAPI documents scores in API Insights [preview environment](https://developer.cisco.com/-preprod/timeline?service=demo--minidashboard_api).
 
 Open a different web browser (Firefox) and load revision [1.24.0-rev1](compliance-1.24.0-rev1.yaml) into [Swagger Editor](https://editor.swagger.io)
 

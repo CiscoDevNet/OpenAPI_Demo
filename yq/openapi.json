@@ -3,7 +3,7 @@
   "info": {
     "version": "1.22.0-rev1",
     "title": "Compliance MiniDashboard API",
-    "description": "The MiniDashboard API is a modern REST API based on the OpenAPI specification.  [Recent Updates](https://developer.cisco.com/api-insights)\n",
+    "description": "The MiniDashboard API is a modern REST API based on the OpenAPI specification.  [Recent Updates](https://developer.cisco.com/)\n",
     "contact": {
       "name": "Developer Community",
       "url": "https://developer.cisco.com"

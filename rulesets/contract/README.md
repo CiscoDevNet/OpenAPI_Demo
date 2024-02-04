@@ -1,13 +1,13 @@
 # Spectral example
 
-This example uses the Contract analyzer of API Insights
+This example uses the 'Contract completeness' ruleset
 
 ```shell
 # Example of a successful contract
 > spectral lint --ruleset ruleset.yaml compliance-1.24.0-rev1.yaml -v 
 
 Found 59 rules (10 enabled)
-Linting /mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/API_Insights_Demo/rulesets/contract/compliance-1.24.0-rev1.yaml
+Linting /mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/OpenAPI_Demo/rulesets/contract/compliance-1.24.0-rev1.yaml
 
 No results with a severity of 'error' found!
 ```
@@ -17,9 +17,9 @@ No results with a severity of 'error' found!
 > spectral lint --ruleset ruleset.yaml compliance-1.22.0-rev1.yaml -v 
 
 Found 59 rules (10 enabled)
-Linting /mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/API_Insights_Demo/rulesets/contract/compliance-1.22.0-rev1.yaml
+Linting /mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/OpenAPI_Demo/rulesets/contract/compliance-1.22.0-rev1.yaml
 
-/mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/API_Insights_Demo/rulesets/contract/compliance-1.22.0-rev1.yaml
+/mnt/c/Users/stsfartz/repos/github.com/CiscoDevNet/OpenAPI_Demo/rulesets/contract/compliance-1.22.0-rev1.yaml
   32:17  warning  error-status-code          There should be at least one error status code either 4xx or 5xx.; none of /^4\d{2}$/,/^5\d{2}$/,/^default$/ are matched              paths./organizations.get.responses
  114:17  warning  error-status-code          There should be at least one error status code either 4xx or 5xx.; none of /^4\d{2}$/,/^5\d{2}$/,/^default$/ are matched              paths./organizations.post.responses
  119:22    error  general-schema-definition  Some of the defined schema use object as a final field when describing their object structure.; properties missing for object schema  paths./organizations.post.responses[201].content.application/json.schema
